@@ -18,7 +18,7 @@ public class Bishop extends Piece {
 		else {return false;}
 	};
 	
-	protected void move(Position p) {
+	public void move(Position p) {
 		if (isValidMove(p)) {setPosition(p);}
 	};
 

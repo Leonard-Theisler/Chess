@@ -2,7 +2,7 @@ package Pieces;
 
 public abstract class Piece {
 	
-	private Position pos;
+	private Position pos = new Position();
 	private Boolean dead;
 	
 	public Boolean getDead() {
@@ -13,16 +13,16 @@ public abstract class Piece {
 		this.dead = b;
 	}
 	
-	protected Position getPosition() {
-		return this.pos;
+	public Position getPosition() {
+		return new Position(this.pos.getX(), this.pos.getY());
 	}
 	
-	protected void setPosition(Position p) {
+	public void setPosition(Position p) {
 		this.pos.setX(p.getX());
 		this.pos.setY(p.getY());
 	}
 	
 	protected abstract Boolean isValidMove(Position p);
-	protected abstract void move(Position p);
+	public abstract void move(Position p);
 
 }
