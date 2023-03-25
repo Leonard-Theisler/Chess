@@ -40,6 +40,14 @@ public class SDBishop {
 		context.position = p;
 	    context.bishop.move(p);
 	}
+	
+	@When("the bishop tries to move to \\({int}, {int})")
+	public void the_bishop_tries_to_move_to(Integer int1, Integer int2) {
+		Position p = new Position(int1, int2);
+		context.position = p;
+	    context.bishop.move(p);
+	}
+	
 	@Then("the bishop is at position \\({int}, {int})")
 	public void the_bishop_is_at_position(Integer int1, Integer int2) {		
 		int bx = context.bishop.getPosition().getX();
