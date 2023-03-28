@@ -2,6 +2,7 @@ package StepDefinitions;
 
 import Pieces.Bishop;
 import Pieces.Position;
+import Pieces.Pawn;
 import Setup.Board;
 import Setup.Game;
 
@@ -13,5 +14,6 @@ public class Context {
 	Position position;
 	
 	Bishop bishop;
+	Pawn pawn;
 
 }

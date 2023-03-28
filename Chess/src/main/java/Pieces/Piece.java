@@ -4,9 +4,18 @@ public abstract class Piece {
 	
 	private Position pos = new Position();
 	private Boolean dead;
+	private Boolean white;
 	
 	public Boolean getDead() {
 		return dead;
+	}
+	
+	public Boolean getWhite() {
+		return white;
+	}
+	
+	public void setWhite(Boolean b) {
+		white = b;
 	}
 	
 	public void setDead(Boolean b) {
@@ -23,6 +32,6 @@ public abstract class Piece {
 	}
 	
 	protected abstract Boolean isValidMove(Position p);
-	public abstract void move(Position p);
+	public void move(Position p) {};
 
 }
