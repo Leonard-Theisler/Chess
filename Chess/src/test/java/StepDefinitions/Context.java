@@ -11,7 +11,9 @@ public class Context {
 	
 	Game game;
 	Board board;
-	Position position;
+	Position oldPos;
+	Position newPos;
+
 	
 	Bishop bishop;
 	Pawn pawn;

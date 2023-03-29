@@ -8,7 +8,7 @@ public class Bishop extends Piece {
 		setDead(false);
 	}
 	
-	protected Boolean isValidMove(Position p) {
+	public Boolean isValidMove(Position p) {
 		
 		Position pos = getPosition();
 		if (Math.abs(pos.getX() - p.getX()) == Math.abs(pos.getY() - p.getY()) ) {

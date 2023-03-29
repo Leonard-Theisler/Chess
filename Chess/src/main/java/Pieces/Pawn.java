@@ -8,7 +8,7 @@ public class Pawn extends Piece{
 		setWhite(b);
 	}
 	
-	protected Boolean isValidMove(Position p) {
+	public Boolean isValidMove(Position p) {
 		
 		Position pos = getPosition();
 		if ( (pos.getX() == p.getX()) && getWhite() && (p.getY() - pos.getY() == 1)

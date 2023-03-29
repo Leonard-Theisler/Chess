@@ -31,7 +31,7 @@ public abstract class Piece {
 		this.pos.setY(p.getY());
 	}
 	
-	protected abstract Boolean isValidMove(Position p);
+	public abstract Boolean isValidMove(Position p);
 	public void move(Position p) {};
 
 }

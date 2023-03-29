@@ -40,9 +40,17 @@ public class Board {
 		return getCell(p).piece;
 	}
 	
-	private void movePiece(Piece p, Position pos) {
+	public void movePiece(Piece p, Position newPos, Position oldPos) {
+		if (p.isValidMove(newPos)) {
+			setPieceAt(p, newPos);
+			removePieceAt(oldPos);
+		}
 		
 	};
+	
+	private void removePieceAt(Position p) {
+		getCell(p).piece = null;
+	}
 	
 	
 }
