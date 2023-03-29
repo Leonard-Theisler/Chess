@@ -32,7 +32,7 @@ public class SDBishop {
 	    Bishop b = new Bishop(p);
 	    context.oldPos = p;
 	    context.bishop = b;
-	    context.board.setPieceAt(context.bishop, p);
+	    context.board.setPieceAt(context.bishop, context.oldPos);
 	}
 	@When("the bishop moves to \\({int}, {int})")
 	public void the_bishop_moves_to(Integer int1, Integer int2) {

@@ -32,6 +32,5 @@ public abstract class Piece {
 	}
 	
 	public abstract Boolean isValidMove(Position p);
-	public void move(Position p) {};
 
 }

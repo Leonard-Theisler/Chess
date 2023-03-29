@@ -45,7 +45,6 @@ public class Board {
 			setPieceAt(p, newPos);
 			removePieceAt(oldPos);
 		}
-		
 	};
 	
 	private void removePieceAt(Position p) {

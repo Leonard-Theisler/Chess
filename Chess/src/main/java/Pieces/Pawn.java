@@ -8,11 +8,15 @@ public class Pawn extends Piece{
 		setWhite(b);
 	}
 	
-	public Boolean isValidMove(Position p) {
+
+	public Boolean isValidMove(Position newPos) {
 		
-		Position pos = getPosition();
-		if ( (pos.getX() == p.getX()) && getWhite() && (p.getY() - pos.getY() == 1)
-			|| (pos.getX() == p.getX()) && !getWhite() && (p.getY() - pos.getY() == -1)	
+		Position oldPos = getPosition();
+		
+		if ( (oldPos.getX() == newPos.getX()) && getWhite() && (newPos.getY() - oldPos.getY() == 1)
+			|| (oldPos.getX() == newPos.getX()) && !getWhite() && (newPos.getY() - oldPos.getY() == -1)
+			|| (oldPos.getX() == newPos.getX()) && getWhite() && (newPos.getY() - oldPos.getY() == 2) && oldPos.isWhitePawnInitialPosition()
+			|| (oldPos.getX() == newPos.getX()) && !getWhite() && (newPos.getY() - oldPos.getY() == -2) && oldPos.isBlackPawnInitialPosition()
 				) {
 			return true;
 		}
@@ -20,12 +24,4 @@ public class Pawn extends Piece{
 		else {return false;}
 	};
 	
-	public void move(int y) {
-		if (isValidMove(new Position(getPosition().getX(), y))) {
-			setPosition(new Position(getPosition().getX(), y));
-			}
-	};
-
-
-
 }
