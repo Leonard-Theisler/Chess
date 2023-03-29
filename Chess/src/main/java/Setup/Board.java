@@ -1,6 +1,7 @@
 package Setup;
 
 import Pieces.Piece;
+import Pieces.Bishop;
 import Pieces.Position;
 
 public class Board {
@@ -29,5 +30,19 @@ public class Board {
 		return getCell(p).piece != null;
 		
 	}
-
+	
+	public void setPieceAt(Piece p, Position pos)
+	{
+		getCell(pos).piece = p;
+	}
+	
+	public Piece getPieceAt(Position p) {
+		return getCell(p).piece;
+	}
+	
+	private void movePiece(Piece p, Position pos) {
+		
+	};
+	
+	
 }

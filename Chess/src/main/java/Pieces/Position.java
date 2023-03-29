@@ -26,5 +26,20 @@ public class Position {
 	public void setY(int y) {
 		this.y = y;
 	}
+	
+	public Boolean isWhitePawnInitialPosition() {
+		if (y == 1 && (x<=7 && x>=0 )) {
+			return true;
+		}
+		return false;
+	}
+	
+	public Boolean isBlackPawnInitialPosition() {
+		if (y == 6 && (x<=7 && x>=0 )) {
+			return true;
+		}
+		return false;
+	}
+	
 
 }

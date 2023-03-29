@@ -25,6 +25,33 @@ public void a_pawn_on_the_board_at(Integer int1, Integer int2) {
     Pawn p = new Pawn(pos, true);
     context.pawn = p;
 }
+
+@Given("a black pawn on the board at \\({int}, {int})")
+public void a_black_pawn_on_the_board_at(Integer int1, Integer int2) {
+	Position pos = new Position(int1, int2);
+    Pawn p = new Pawn(pos, false);
+    context.pawn = p;
+}
+
+@Given("a white pawn on the board at initial position \\({int}, {int})")
+public void a_white_pawn_on_the_board_at_initial_position(Integer int1, Integer int2) {
+    Position pos = new Position(int1, int2);
+    if (pos.isWhitePawnInitialPosition()) {
+        Pawn p = new Pawn(pos, true);
+        context.pawn = p;    	
+    }
+}
+
+@Given("a black pawn on the board at initial position \\({int}, {int})")
+public void a_black_pawn_on_the_board_at_initial_position(Integer int1, Integer int2) {
+    Position pos = new Position(int1, int2);
+    if (pos.isBlackPawnInitialPosition()) {
+        Pawn p = new Pawn(pos, true);
+        context.pawn = p;    	
+    }
+}
+
+
 @When("the pawn moves forward {int}")
 public void the_pawn_moves_forward(Integer int1) {
     context.pawn.move(int1);
