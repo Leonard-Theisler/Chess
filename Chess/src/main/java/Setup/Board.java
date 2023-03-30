@@ -2,6 +2,7 @@ package Setup;
 
 import Pieces.Piece;
 import Pieces.Bishop;
+import Pieces.Pawn;
 import Pieces.Position;
 
 public class Board {
@@ -40,12 +41,25 @@ public class Board {
 		return getCell(p).piece;
 	}
 	
+	public Boolean canMove(Piece p, Position oldPos, Position newPos) {
+		if (p.isValidMove(newPos))
+			{return true;}
+		else if (p instanceof Pawn) {
+			Pawn pawn = (Pawn) p;
+			if (pawn.canTake(oldPos, newPos, this)) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+	
 	public void movePiece(Piece p, Position newPos, Position oldPos) {
-		if (p.isValidMove(newPos)) {
+		if (canMove(p, oldPos, newPos)) {
 			setPieceAt(p, newPos);
 			removePieceAt(oldPos);
-		}
-	};
+			}
+	}
 	
 	private void removePieceAt(Position p) {
 		getCell(p).piece = null;

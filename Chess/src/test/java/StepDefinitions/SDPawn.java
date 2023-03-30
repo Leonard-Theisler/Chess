@@ -70,10 +70,22 @@ public void the_pawn_moves_forward(Integer int1) {
     context.board.movePiece(context.pawn, context.newPos, context.oldPos);
 }
 
+@When("the pawn takes the piece at \\({int}, {int})")
+public void the_pawn_takes_the_piecer_at(Integer int1, Integer int2) {
+	Position pos = new Position(int1, int2);
+	context.newPos = pos;
+    context.board.movePiece(context.pawn, context.newPos, context.oldPos);
+}
+
 @Then("the pawn is at position \\({int}, {int})")
 public void the_pawn_is_at_position(Integer int1, Integer int2) {
 	assertEquals(context.pawn, context.board.getPieceAt(context.newPos));
+}
 
+@Then("the pawn is still at position \\({int}, {int})")
+public void the_pawn_is_still_at_position(Integer int1, Integer int2) {
+    Position pos = new Position(int1, int2);
+	assertEquals(context.pawn, context.board.getPieceAt(pos));
 
 }
 

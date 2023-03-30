@@ -1,10 +1,11 @@
 package Pieces;
 
+import Setup.Board;
+
 public class Pawn extends Piece{
 	
 	public Pawn(Position p, Boolean b) {
 		setPosition(p);
-		setDead(false);
 		setWhite(b);
 	}
 	
@@ -16,12 +17,20 @@ public class Pawn extends Piece{
 		if ( (oldPos.getX() == newPos.getX()) && getWhite() && (newPos.getY() - oldPos.getY() == 1)
 			|| (oldPos.getX() == newPos.getX()) && !getWhite() && (newPos.getY() - oldPos.getY() == -1)
 			|| (oldPos.getX() == newPos.getX()) && getWhite() && (newPos.getY() - oldPos.getY() == 2) && oldPos.isWhitePawnInitialPosition()
-			|| (oldPos.getX() == newPos.getX()) && !getWhite() && (newPos.getY() - oldPos.getY() == -2) && oldPos.isBlackPawnInitialPosition()
-				) {
-			return true;
-		}
-		
+			|| (oldPos.getX() == newPos.getX()) && !getWhite() && (newPos.getY() - oldPos.getY() == -2) && oldPos.isBlackPawnInitialPosition())
+		{return true;}
+
 		else {return false;}
 	};
+	
+	public Boolean canTake(Position oldPos, Position newPos, Board b) {
+		if ( ((Math.abs(newPos.getX() - oldPos.getX()) == Math.abs(newPos.getY() - oldPos.getY()) && newPos.getY() - oldPos.getY() == 1) && getWhite() && b.hasPieceAt(newPos) && !b.getPieceAt(newPos).getWhite())
+		  || ((Math.abs(newPos.getX() - oldPos.getX()) == Math.abs(newPos.getY() - oldPos.getY()) && newPos.getY() - oldPos.getY() == -1) && !getWhite() && b.hasPieceAt(newPos) && b.getPieceAt(newPos).getWhite()))
+			{return true;}
+		
+		else {return false;}
+	}
+	
+	
 	
 }

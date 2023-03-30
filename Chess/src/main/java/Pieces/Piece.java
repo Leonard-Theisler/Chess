@@ -3,13 +3,9 @@ package Pieces;
 public abstract class Piece {
 	
 	private Position pos = new Position();
-	private Boolean dead;
 	private Boolean white;
 	
-	public Boolean getDead() {
-		return dead;
-	}
-	
+
 	public Boolean getWhite() {
 		return white;
 	}
@@ -17,11 +13,7 @@ public abstract class Piece {
 	public void setWhite(Boolean b) {
 		white = b;
 	}
-	
-	public void setDead(Boolean b) {
-		this.dead = b;
-	}
-	
+		
 	public Position getPosition() {
 		return new Position(this.pos.getX(), this.pos.getY());
 	}

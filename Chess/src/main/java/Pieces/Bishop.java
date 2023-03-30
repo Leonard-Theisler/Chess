@@ -5,7 +5,11 @@ public class Bishop extends Piece {
 	
 	public Bishop(Position p) {
 		setPosition(p);
-		setDead(false);
+	}
+	
+	public Bishop(Position p, Boolean b) {
+		setPosition(p);
+		setWhite(b);
 	}
 	
 	public Boolean isValidMove(Position p) {
