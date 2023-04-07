@@ -1,5 +1,7 @@
 package Pieces;
 
+import Setup.Board;
+
 public abstract class Piece {
 	
 	private Position pos = new Position();
@@ -23,6 +25,6 @@ public abstract class Piece {
 		this.pos.setY(p.getY());
 	}
 	
-	public abstract Boolean isValidMove(Position p);
+	public abstract Boolean isValidMove(Position p, Board b);
 
 }

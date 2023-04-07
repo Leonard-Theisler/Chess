@@ -4,6 +4,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 import Pieces.Bishop;
 import Pieces.Position;
@@ -88,5 +89,21 @@ public void the_pawn_is_still_at_position(Integer int1, Integer int2) {
 	assertEquals(context.pawn, context.board.getPieceAt(pos));
 
 }
+
+@Then("the white pawn is still at \\({int}, {int})")
+public void the_white_pawn_is_still_at_position(Integer int1, Integer int2) {
+    Position pos = new Position(int1, int2);
+	assertEquals(context.pawn, context.board.getPieceAt(pos));
+
+}
+
+@Then("the black pawn is no longer at \\({int}, {int})")
+public void the_black_pawn_is_still_at_position(Integer int1, Integer int2) {
+    Position pos = new Position(int1, int2);
+	assertFalse(context.pawn == context.board.getPieceAt(pos));
+
+}
+
+
 
 }

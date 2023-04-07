@@ -10,14 +10,15 @@ public class Pawn extends Piece{
 	}
 	
 
-	public Boolean isValidMove(Position newPos) {
+	public Boolean isValidMove(Position newPos, Board b) {
 		
 		Position oldPos = getPosition();
 		
-		if ( (oldPos.getX() == newPos.getX()) && getWhite() && (newPos.getY() - oldPos.getY() == 1)
+		if ( ((oldPos.getX() == newPos.getX()) && getWhite() && (newPos.getY() - oldPos.getY() == 1)
 			|| (oldPos.getX() == newPos.getX()) && !getWhite() && (newPos.getY() - oldPos.getY() == -1)
 			|| (oldPos.getX() == newPos.getX()) && getWhite() && (newPos.getY() - oldPos.getY() == 2) && oldPos.isWhitePawnInitialPosition()
 			|| (oldPos.getX() == newPos.getX()) && !getWhite() && (newPos.getY() - oldPos.getY() == -2) && oldPos.isBlackPawnInitialPosition())
+			&& b.getPieceAt(newPos) == null)
 		{return true;}
 
 		else {return false;}

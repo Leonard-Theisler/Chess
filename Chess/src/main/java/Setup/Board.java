@@ -42,7 +42,7 @@ public class Board {
 	}
 	
 	public Boolean canMove(Piece p, Position oldPos, Position newPos) {
-		if (p.isValidMove(newPos))
+		if (p.isValidMove(newPos, this))
 			{return true;}
 		else if (p instanceof Pawn) {
 			Pawn pawn = (Pawn) p;
@@ -56,8 +56,8 @@ public class Board {
 	
 	public void movePiece(Piece p, Position newPos, Position oldPos) {
 		if (canMove(p, oldPos, newPos)) {
-			setPieceAt(p, newPos);
 			removePieceAt(oldPos);
+			setPieceAt(p, newPos);
 			}
 	}
 	
