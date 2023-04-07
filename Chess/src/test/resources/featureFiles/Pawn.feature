@@ -60,5 +60,22 @@ Feature: Pawn
     Then the pawn is still at position (5, 5)
     And the black piece is still at (4, 4)
     
+   Scenario: white pawn tries to go to occupied square
+    Given a game with an empty board
+    And a white pawn on the board at (5, 5)
+    And a black piece on the board at (5, 6)
+    When the pawn tries to move to (5, 6)
+    Then the pawn is still at position (5, 5)
+    And the black piece is still at (5, 6)
+    
+   Scenario: black pawn tries to go to occupied square
+    Given a game with an empty board
+    And a black pawn on the board at (5, 5)
+    And a white piece on the board at (5, 4)
+    When the pawn tries to move to (5, 4)
+    Then the pawn is still at position (5, 5)
+    And the white piece is still at (5, 4)
+    
+    
     
     

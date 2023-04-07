@@ -29,7 +29,6 @@ Feature: Bishop
     And a white bishop on the board at (5, 5)
     And a black pawn on the board at (7, 7)
     When the bishop moves to (7, 7)
-    Then the bishop is at (7, 7) and some nonsense
     And the bishop is at (7, 7)
     And the black pawn is no longer at (7, 7)
     
