@@ -32,6 +32,23 @@ Feature: King
     And the king is at (6, 6)
     And the black pawn is no longer at (6, 6)
     
+  Scenario: King tries to go to threatened square
+  	Given a game with an empty board
+    And a black king on the board at (5, 5)
+    And a white rook on the board at (3, 6)
+    When the king moves to (6, 6)
+    And the king is at (5, 5)
+    
+    
+  Scenario: King tries to take protected piece
+  	Given a game with an empty board
+    And a black king on the board at (5, 5)
+    And a white pawn on the board at (6, 6)
+    And a white rook on the board at (3, 6)
+    When the king moves to (6, 6)
+    And the king is at (5, 5)
+    And the pawn is at position (6, 6)
+    
    
     
     

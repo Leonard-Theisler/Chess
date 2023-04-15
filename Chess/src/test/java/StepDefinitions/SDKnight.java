@@ -9,7 +9,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class SDKnight {
-private Context context;
+	private Context context;
 	
 	public SDKnight(Context context) {
 		this.context = context;

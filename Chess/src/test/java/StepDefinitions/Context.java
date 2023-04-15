@@ -1,6 +1,7 @@
 package StepDefinitions;
 
 import Pieces.Bishop;
+import Pieces.King;
 import Pieces.Knight;
 import Pieces.Position;
 import Pieces.Queen;
@@ -23,5 +24,6 @@ public class Context {
 	Rook rook;
 	Queen queen;
 	Knight knight;
+	King king;
 
 }
