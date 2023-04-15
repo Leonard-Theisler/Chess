@@ -1,9 +1,16 @@
 package Setup;
 
 import Pieces.Piece;
+
+import java.util.ArrayList;
+
 import Pieces.Bishop;
+import Pieces.King;
+import Pieces.Knight;
 import Pieces.Pawn;
 import Pieces.Position;
+import Pieces.Queen;
+import Pieces.Rook;
 
 public class Board {
 
@@ -12,10 +19,13 @@ public class Board {
 	}
 	
 	private Cell[][] matrix;
+	ArrayList<Piece> backRow;
+	ArrayList<Piece> pawnRow;
+
 
 	public Board()
 	{
-		this.matrix = new Cell[8][8];
+		matrix = new Cell[8][8];
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
 				matrix[i][j] = new Cell();
@@ -23,22 +33,22 @@ public class Board {
 		}
 	}
 	
-	private Cell getCell(Position p) {
+	private Cell getCellAt(Position p) {
 		return matrix[p.getX()][p.getY()];
 	}
 	
 	public Boolean hasPieceAt(Position p) {
-		return getCell(p).piece != null;
+		return getCellAt(p).piece != null;
 		
 	}
 	
 	public void setPieceAt(Piece p, Position pos)
 	{
-		getCell(pos).piece = p;
+		getCellAt(pos).piece = p;
 	}
 	
 	public Piece getPieceAt(Position p) {
-		return getCell(p).piece;
+		return getCellAt(p).piece;
 	}
 	
 	public Boolean canMove(Piece p, Position oldPos, Position newPos) {
@@ -62,7 +72,47 @@ public class Board {
 	}
 	
 	private void removePieceAt(Position p) {
-		getCell(p).piece = null;
+		getCellAt(p).piece = null;
+	}
+	
+	private ArrayList<Piece> backRowGen(Boolean color) {
+		int rowNum;
+		backRow = new ArrayList<Piece>();
+
+		if(color) {rowNum = 0;}
+		else {rowNum = 7;}
+		
+		backRow.add(new Rook(new Position(rowNum, 0), color));
+		backRow.add(new Knight(new Position(rowNum, 1), color));
+		backRow.add(new Bishop(new Position(rowNum, 2), color));
+		backRow.add(new Queen(new Position(rowNum, 3), color));
+		backRow.add(new King(new Position(rowNum, 4), color));
+		backRow.add(new Bishop(new Position(rowNum, 5), color));
+		backRow.add(new Knight(new Position(rowNum, 6), color));
+		backRow.add(new Rook(new Position(rowNum, 7), color));
+
+		return backRow;
+	}
+	
+	private ArrayList<Piece> pawnRowGen(Boolean color) {
+		int rowNum;
+		pawnRow = new ArrayList<Piece>();
+
+		if(color) {rowNum = 1;}
+		else {rowNum = 6;}
+		
+		for (int i = 0; i<8; i++) {
+			pawnRow.add(new Rook(new Position(rowNum, i), color));
+		}
+
+		return pawnRow;
+	}
+	
+	
+	public void setup() {
+		for (int i = 0; i<8; i++) {
+			
+		}
 	}
 	
 	
