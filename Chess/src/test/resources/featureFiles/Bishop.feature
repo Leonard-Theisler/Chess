@@ -9,7 +9,7 @@ Feature: Bishop
     And there is no piece at (5, 5)
     
   @tag2
-  Scenario: Bishop makes attempts an illegal move
+  Scenario: Bishop attempts an illegal move
     Given a game with an empty board
     And a bishop on the board at (5, 5)
     When the bishop tries to move to (5, 7)
