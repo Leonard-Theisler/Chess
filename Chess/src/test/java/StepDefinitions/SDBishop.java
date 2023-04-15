@@ -17,15 +17,6 @@ public class SDBishop {
 		this.context = context;
 	}
 	
-	
-	@Given("a game with an empty board")
-	public void a_game_with_an_empty_board() {
-	    Game game = new Game();
-	    Board board = new Board();
-	    context.game = game;
-	    context.board = board;
-	    context.game.setBoard(board);
-	}
 	@Given("a bishop on the board at \\({int}, {int})")
 	public void a_bishop_on_the_board_at(Integer int1, Integer int2) {
 		Position p = new Position(int1, int2);

@@ -102,16 +102,20 @@ public class Board {
 		else {rowNum = 6;}
 		
 		for (int i = 0; i<8; i++) {
-			pawnRow.add(new Rook(new Position(rowNum, i), color));
+			pawnRow.add(new Pawn(new Position(rowNum, i), color));
 		}
 
 		return pawnRow;
 	}
 	
 	
-	public void setup() {
+	public void boardSetup() {
 		for (int i = 0; i<8; i++) {
-			
+			matrix[0][i].piece = backRowGen(true).get(i);
+			matrix[1][i].piece = pawnRowGen(true).get(i);
+			matrix[6][i].piece = pawnRowGen(false).get(i);
+			matrix[7][i].piece = backRowGen(false).get(i);
+
 		}
 	}
 	
