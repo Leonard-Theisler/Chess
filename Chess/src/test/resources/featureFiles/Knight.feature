@@ -24,3 +24,11 @@ Feature: Knight
     Then the white pawn is still at (5, 4)
     And the knight is at (3, 3)
     
+  Scenario: White knight takes black piece
+    Given a game with an empty board
+    And a white knight on the board at (3, 3)
+    And a black pawn on the board at (5, 4)
+    When the knight moves to (5, 4)
+    And the knight is at (5, 4)
+    And the black pawn is no longer at (5, 4)
+    
