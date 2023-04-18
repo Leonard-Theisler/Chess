@@ -45,6 +45,7 @@ public class Board {
 	public void setPieceAt(Piece p, Position pos)
 	{
 		getCellAt(pos).piece = p;
+		p.setPosition(pos);
 	}
 	
 	public Piece getPieceAt(Position p) {
@@ -60,6 +61,11 @@ public class Board {
 				return true;
 			}
 		}
+		else if (p instanceof King) {
+			King king = (King) p;
+			return isCastleLegal(king, oldPos, newPos);
+			
+		}
 
 		return false;
 	}
@@ -71,8 +77,40 @@ public class Board {
 			}
 	}
 	
+	
 	private void removePieceAt(Position p) {
 		getCellAt(p).piece = null;
+	}
+	
+	public Boolean isCastleLegal(King king, Position oldPos, Position newPos) {
+		if (king.isThreatened(this, oldPos, oldPos)) {
+			return false;
+		}
+		else if (king.isAtInitialPosition() && oldPos.getX()-newPos.getX() < 0 ) {
+			Piece piece = getPieceAt(new Position(oldPos.getX()+3, oldPos.getY()));
+			if (piece instanceof Rook) {
+				Rook rook = (Rook) piece;
+				if (king.canCastle(this, newPos, rook)) {
+					Position pos = rook.getPosition();
+					setPieceAt(rook, new Position(rook.getPosition().getX()-2, rook.getPosition().getY()));
+					removePieceAt(pos);
+					return true;
+				}
+			}
+		}
+		else if (king.isAtInitialPosition() && oldPos.getX()-newPos.getX() > 0 ) {
+			Piece piece = getPieceAt(new Position(oldPos.getX()-4, oldPos.getY()));
+			if (piece instanceof Rook) {
+				Rook rook = (Rook) piece;
+				if (king.canCastle(this, newPos, rook)) {
+					Position pos = rook.getPosition();
+					setPieceAt(rook, new Position(rook.getPosition().getX()+3, rook.getPosition().getY()));
+					removePieceAt(pos);
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 	
 	private ArrayList<Piece> backRowGen(Boolean color) {

@@ -25,7 +25,7 @@ public abstract class Piece {
 		this.pos.setY(p.getY());
 	}
 	
-	protected Boolean isThreatened(Board b, Position p, Position kingPos) {
+	public Boolean isThreatened(Board b, Position p, Position kingPos) {
 		
 		for (int i = 0; i<8; i++) {
 			for (int j = 0; j<8; j++) {

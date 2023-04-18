@@ -50,8 +50,79 @@ Feature: King
     And the pawn is at position (6, 6)
     
    
+  Scenario: Black king short castle
+  	Given a game with an empty board
+    And a black king on the board at (4, 7)
+    And a black rook on the board at (7, 7)
+    When the king moves to (6, 7)
+    Then the king is at (6, 7)
+    And the rook is at (5, 7)
     
+  Scenario: Black king long castle
+  	Given a game with an empty board
+    And a black king on the board at (4, 7)
+    And a black rook on the board at (0, 7)
+    When the king moves to (2, 7)
+    Then the king is at (2, 7)
+    And the rook is at (3, 7)
     
+ Scenario: White king short castle
+  	Given a game with an empty board
+    And a white king on the board at (4, 0)
+    And a white rook on the board at position (7, 0)
+    When the king moves to (6, 0)
+    Then the king is at (6, 0)
+    And the rook is at (5, 0)
+    
+  Scenario: White king long castle
+  	Given a game with an empty board
+    And a white king on the board at (4, 0)
+    And a white rook on the board at position (0, 0)
+    When the king moves to (2, 0)
+    Then the king is at (2, 0)
+    And the rook is at (3, 0)
+    
+  Scenario: White king attempts illegal long castle
+  	Given a game with an empty board
+    And a white king on the board at (4, 0)
+    And a white rook on the board at position (0, 0)
+    And a white knight on the board at position(1, 0)
+    When the king tries to move to (2, 0)
+    Then the king is at (4, 0)
+    And the rook is at (0, 0)
+    And the knight is at (1, 0)
+    
+  Scenario: Black king attempts illegal short castle
+  	Given a game with an empty board
+    And a black king on the board at (4, 7)
+    And a black rook on the board at position (7, 7)
+    And a black knight on the board at position(6, 7)
+    When the king tries to move to (6, 7)
+    Then the king is at (4, 7)
+    And the rook is at (7, 7)
+    And the knight is at (6, 7)
+    
+  Scenario: Black king attempts short castle when threatened
+  	Given a game with an empty board
+    And a black king on the board at (4, 7)
+    And a black rook on the board at position (7, 7)
+    And a white knight on the board at position(2, 6)
+    When the king tries to move to (6, 7)
+    Then the king is at (4, 7)
+    And the rook is at (7, 7)
+    And the knight is at (2, 6)
+    
+  Scenario: White king attempts short castle when threatened
+  	Given a game with an empty board
+    And a white king on the board at (4, 0)
+    And a white rook on the board at position (7, 0)
+    And a black knight on the board at position(2, 1)
+    When the king tries to move to (6, 0)
+    Then the king is at (4, 0)
+    And the rook is at (7, 0)
+    And the knight is at (2, 1)
+    
+  
     
   
     

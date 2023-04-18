@@ -32,6 +32,29 @@ public class SDRook {
 	    context.rook = r;
 	    context.board.setPieceAt(context.rook, context.oldPos);
 	}
+	
+	@Given("a black rook on the board at \\({int}, {int})")
+	public void a_black_rook_on_the_board_at(Integer int1, Integer int2) {
+		Position p = new Position(int1, int2);
+	    Rook r = new Rook(p, false);
+	    context.rook = r;
+	    context.board.setPieceAt(context.rook, p);
+	}
+	
+	@Given("a white rook on the board at position \\({int}, {int})")
+	public void a_white_rook_on_the_board_at_position(Integer int1, Integer int2) {
+		Position p = new Position(int1, int2);
+	    Rook r = new Rook(p, true);
+	    context.rook = r;
+	    context.board.setPieceAt(context.rook, p);
+	}
+	@Given("a black rook on the board at position \\({int}, {int})")
+	public void a_black_rook_on_the_board_at_position(Integer int1, Integer int2) {
+		Position p = new Position(int1, int2);
+	    Rook r = new Rook(p, false);
+	    context.rook = r;
+	    context.board.setPieceAt(context.rook, p);
+	}
 	@When("the rook moves to \\({int}, {int})")
 	public void the_rook_moves_to(Integer int1, Integer int2) {
 		Position p = new Position(int1, int2);

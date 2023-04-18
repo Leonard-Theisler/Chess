@@ -31,6 +31,20 @@ public class SDKnight {
 	    context.knight = r;
 	    context.board.setPieceAt(context.knight, context.oldPos);
 	}
+	@Given("a white knight on the board at position\\({int}, {int})")
+	public void a_white_knight_on_the_board_at_position(Integer int1, Integer int2) {
+		Position p = new Position(int1, int2);
+	    Knight r = new Knight(p, true);
+	    context.knight = r;
+	    context.board.setPieceAt(context.knight, p);
+	}
+	@Given("a black knight on the board at position\\({int}, {int})")
+	public void a_black_knight_on_the_board_at_position(Integer int1, Integer int2) {
+		Position p = new Position(int1, int2);
+	    Knight r = new Knight(p, false);
+	    context.knight = r;
+	    context.board.setPieceAt(context.knight, p);
+	}
 	@When("the knight moves to \\({int}, {int})")
 	public void the_knight_moves_to(Integer int1, Integer int2) {
 		Position p = new Position(int1, int2);
