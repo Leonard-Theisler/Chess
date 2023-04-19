@@ -14,9 +14,6 @@ import Pieces.Rook;
 
 public class Board {
 
-	private class Cell {
-		public Piece piece;
-	}
 	
 	private Cell[][] matrix;
 	ArrayList<Piece> backRow;
@@ -33,7 +30,7 @@ public class Board {
 		}
 	}
 	
-	private Cell getCellAt(Position p) {
+	public Cell getCellAt(Position p) {
 		return matrix[p.getX()][p.getY()];
 	}
 	

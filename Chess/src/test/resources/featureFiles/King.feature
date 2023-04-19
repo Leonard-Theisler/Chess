@@ -122,6 +122,26 @@ Feature: King
     And the rook is at (7, 0)
     And the knight is at (2, 1)
     
+  Scenario: White king attempts short castle when the resulting square is threatened
+  	Given a game with an empty board
+    And a white king on the board at (4, 0)
+    And a white rook on the board at position (7, 0)
+    And a black knight on the board at position(5, 2)
+    When the king tries to move to (6, 0)
+    Then the king is at (4, 0)
+    And the rook is at (7, 0)
+    And the knight is at (5, 2)
+    
+  Scenario: Black king attempts short castle when the resulting square is threatened
+  	Given a game with an empty board
+    And a black king on the board at (4, 7)
+    And a black rook on the board at position (7, 7)
+    And a white knight on the board at position(5, 5)
+    When the king tries to move to (6, 7)
+    Then the king is at (4, 7)
+    And the rook is at (7, 7)
+    And the knight is at (5, 5)
+    
   
     
   

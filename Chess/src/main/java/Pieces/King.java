@@ -47,13 +47,19 @@ public class King extends Piece{
 					}
 				}
 			}
-			if (Math.abs(pos.getX()-getPosition().getX()) == 2) {
-				return true;
+			if ((Math.abs(pos.getX()-getPosition().getX()) == 2)) {
+				if(this.getWhite()) {
+					if(!b.getCellAt(pos).isThreatened(b, pos, false)) {
+						return true;
+					}
+				}
+				else if(!this.getWhite()) {
+					if(!b.getCellAt(pos).isThreatened(b, pos, true)) {
+						return true;
+					}
+				}
 			}
 		}
 		return false;
 	}
-	
-	
-
 }
